@@ -6,8 +6,8 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Elijah Huff.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 # Students:
@@ -40,15 +40,15 @@ def main():
     # UN-comment tests as you work the problems.
     ###########################################################################
 
-    # run_test_init()
-    # run_test_append_string()
-    # run_test_double()
-    # run_test_shrink()
-    # run_test_double_then_shrink()
-    # run_test_reset()
-    # run_test_steal()
-    # run_test_get_history()
-    # run_test_combined_box()
+    run_test_init()
+    run_test_append_string()
+    run_test_double()
+    run_test_shrink()
+    run_test_double_then_shrink()
+    run_test_reset()
+    run_test_steal()
+    run_test_get_history()
+    run_test_combined_box()
 
 
 ###############################################################################
@@ -95,7 +95,7 @@ class Box(object):
           :type volume: int
         """
         # ---------------------------------------------------------------------
-        # TODO: 2. Implement and test this function.
+        # DONE: 2. Implement and test this function.
         #     See the testing code (below) for more examples.
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -103,6 +103,11 @@ class Box(object):
         #    DIFFICULTY:      3
         #    TIME ESTIMATE:   5 minutes.
         # ---------------------------------------------------------------------
+        if volume < len(contents):
+            self.contents = ''
+        else:
+            self.contents = contents
+        self.volume = volume
 
     def append_string(self, additional_contents):
         """
@@ -136,7 +141,7 @@ class Box(object):
           :type additional_contents: str
         """
         # ---------------------------------------------------------------------
-        # TODO: 3. Implement and test this function.
+        # DONE: 3. Implement and test this function.
         #     See the testing code (below) for more examples.
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -158,6 +163,16 @@ class Box(object):
         #       Read_this_ONLY_when_asked_Part_2.txt
         #    and complete your work on the problem.
         # ---------------------------------------------------------------------
+        space = self.volume - len(self.contents)
+        number_of_characters = min(space, len(additional_contents))
+        stuff_to_add = ''
+        for k in range(number_of_characters):
+            stuff_to_add = stuff_to_add + additional_contents[k]
+        self.contents = self.contents + stuff_to_add
+        stuff_to_return = ''
+        for k in range(number_of_characters, len(additional_contents)):
+            stuff_to_return = stuff_to_return + additional_contents[k]
+        return stuff_to_return
 
     def double(self):
         """
@@ -193,7 +208,7 @@ class Box(object):
           #                       contents that did NOT fit]
         """
         # ---------------------------------------------------------------------
-        # TODO: 4. Implement and test this function.
+        # DONE: 4. Implement and test this function.
         #     The testing code is already written for you (above).
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -205,6 +220,8 @@ class Box(object):
         # FOR FULL CREDIT, YOUR SOLUTION MUST BE NO MORE THAN
         #    ** TWO **   LINES OF CODE.
         #######################################################################
+        new = self.append_string(self.contents)
+        return new
 
     def shrink(self, new_volume):
         """
@@ -242,7 +259,7 @@ class Box(object):
           :type new_volume: int
         """
         # ---------------------------------------------------------------------
-        # TODO: 5. Implement and test this function.
+        # DONE: 5. Implement and test this function.
         #     The testing code is already written for you (above).
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -253,6 +270,9 @@ class Box(object):
         # IMPORTANT: Write a solution to this problem in pseudo-code,
         # and THEN translate the pseudo-code to a solution.
         # ---------------------------------------------------------------------
+        self.volume = new_volume
+
+        return new
 
     def double_then_shrink(self, new_volume):
         """
@@ -298,7 +318,7 @@ class Box(object):
           :type new_volume: int
         """
         # ---------------------------------------------------------------------
-        # TODO: 6. Implement and test this function.
+        # DONE: 6. Implement and test this function.
         #     The testing code is already written for you (above).
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -317,7 +337,7 @@ class Box(object):
           when this Box was constructed.
         """
         # ---------------------------------------------------------------------
-        # TODO: 7. Implement and test this function.
+        # DONE: 7. Implement and test this function.
         #     The testing code is already written for you (above).
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -345,7 +365,7 @@ class Box(object):
           :type other_box: Box
         """
         # ---------------------------------------------------------------------
-        # TODO: 8. Implement and test this function.
+        # DONE: 8. Implement and test this function.
         #     The testing code is already written for you (above).
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -388,7 +408,7 @@ class Box(object):
           #   h is now ['GoodGo', 'GoodBye']
         """
         # ---------------------------------------------------------------------
-        # TODO: 9. Implement and test this function.
+        # DONE: 9. Implement and test this function.
         #     The testing code is already written for you (above).
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -415,7 +435,7 @@ class Box(object):
           :type other_box: Box
         """
         # ---------------------------------------------------------------------
-        # TODO: 10. Implement and test this function.
+        # DONE: 10. Implement and test this function.
         #     The testing code is already written for you (above).
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
